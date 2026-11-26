@@ -5,7 +5,10 @@ const SITE = 'https://atelierfaye.co.kr';
 const CATE_NO = 28;
 const BRAND = '아뜰리에페이';
 const EXCLUDE_NO = ['50', '133', '169'];
-const IMAGE_OVERRIDE = { '125': SITE + '/toss_custom_layering_set_20261124.jpg' };
+const IMAGE_OVERRIDE = {
+  '125': SITE + '/toss_custom_layering_set_20261124.jpg',
+  '87': 'https://atelierfaye.co.kr/web/product/extra/big/shop1_40fb916b5b7eeb369cc4c42ec79c759a.jpg',
+};
 const COLS = ['id', 'title', 'brand', 'image_url', 'landing_url', 'price', 'sale_price', 'availability'];
 
 async function get(url) {
