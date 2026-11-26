@@ -1,0 +1,22 @@
+name: update-feed
+on:
+  schedule:
+    - cron: '7 */4 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node generate.mjs
+      - name: commit if changed
+        run: |
+          git config user.name "feed-bot"
+          git config user.email "feed-bot@users.noreply.github.com"
+          git add toss_catalog.csv
+          git diff --cached --quiet || (git commit -m "update feed" && git push)
